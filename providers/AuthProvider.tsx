@@ -49,6 +49,7 @@ export default function AuthProvider({ children }: PropsWithChildren) {
     }
 
     fetchSession()
+    // When auth state change, update our session to redirect correct screen
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
     })

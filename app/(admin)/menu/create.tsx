@@ -1,11 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Text, View, StyleSheet, TextInput, Image, Alert } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
 
 import Button from '@/components/Button'
 import { fallbackURI } from '@/components/ProductListItem'
 import Colors from '@/constants/Colors'
-import { Stack, useLocalSearchParams } from 'expo-router'
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router'
+import {
+  useDeleteProduct,
+  useInsertProduct,
+  useProduct,
+  useUpdateProduct,
+} from '@/api/products'
 
 export default function CreateProductScreen() {
   const [name, setName] = useState('')
@@ -13,8 +19,25 @@ export default function CreateProductScreen() {
   const [errors, setErrors] = useState('')
   const [image, setImage] = useState<string | null>(null)
 
-  const { id } = useLocalSearchParams()
-  const isUpdating = !!id
+  const { id: idString } = useLocalSearchParams()
+  const id = parseFloat(typeof idString === 'string' ? idString : idString?.[0])
+
+  const isUpdating = !!idString
+
+  const { mutate: insertProduct } = useInsertProduct()
+  const { mutate: updateProduct } = useUpdateProduct()
+  const { mutate: deleteProduct } = useDeleteProduct()
+  const { data: updatedProduct } = useProduct(id)
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (updatedProduct) {
+      setName(updatedProduct.name)
+      setPrice(updatedProduct.price.toString())
+      setImage(updatedProduct.image)
+    }
+  }, [updatedProduct])
 
   const resetFields = () => {
     setName('')
@@ -46,14 +69,30 @@ export default function CreateProductScreen() {
     if (!validateInput()) {
       return
     }
-    resetFields()
+    insertProduct(
+      { name, price: parseFloat(price), image },
+      {
+        onSuccess: () => {
+          resetFields()
+          router.back()
+        },
+      }
+    )
   }
 
   const onUpdate = () => {
     if (!validateInput()) {
       return
     }
-    resetFields()
+    updateProduct(
+      { id, name, price: parseFloat(price), image },
+      {
+        onSuccess: () => {
+          resetFields()
+          router.back()
+        },
+      }
+    )
   }
 
   const pickImage = async () => {
@@ -73,7 +112,12 @@ export default function CreateProductScreen() {
   }
 
   const onDelete = () => {
-    console.warn('Delete')
+    deleteProduct(id, {
+      onSuccess: () => {
+        resetFields()
+        router.replace('/(admin)')
+      },
+    })
   }
 
   const confirmDelete = () => {

@@ -1,11 +1,10 @@
-import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
+import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
-import Colors from '../constants/Colors'
-import { CartItem } from '../types'
-import { Link } from 'expo-router'
+import Colors from '@/constants/Colors'
+import { CartItem } from '@/types'
 import { fallbackURI } from '@/components/ProductListItem'
 import { FontAwesome } from '@expo/vector-icons'
-import { useCart } from '../providers/CartProvider'
+import { useCart } from '@/providers/CartProvider'
 
 type CartListItemProps = {
   cartItem: CartItem

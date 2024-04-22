@@ -1,8 +1,8 @@
-import { Order } from '../../types';
-import products from './products';
-import dayjs from 'dayjs';
+import { Order } from '@/types'
+import products from './products'
+import dayjs from 'dayjs'
 
-const now = dayjs();
+const now = dayjs()
 
 const orders: Order[] = [
   {
@@ -80,6 +80,6 @@ const orders: Order[] = [
       },
     ],
   },
-];
+]
 
-export default orders;
+export default orders

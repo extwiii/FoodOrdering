@@ -3,7 +3,7 @@ import React from 'react'
 import { Order } from '../types'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import dayjs from 'dayjs'
-import { Link } from 'expo-router'
+import { Link, useSegments } from 'expo-router'
 
 dayjs.extend(relativeTime)
 
@@ -12,8 +12,9 @@ type OrderListItemProps = {
 }
 
 const OrderListItem = ({ order }: OrderListItemProps) => {
+  const segments = useSegments<['(user)' | '(admin)']>()
   return (
-    <Link href={`../orders/${order.id}`} asChild>
+    <Link href={`/${segments[0]}/orders/${order.id}`} asChild>
       <Pressable style={styles.container}>
         <View>
           <Text style={styles.title}>Order #{order.id}</Text>
