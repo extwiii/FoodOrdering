@@ -1,18 +1,20 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import Colors from '@/constants/Colors'
-import { OrderItem } from '@/types'
+import { Tables } from '@/types'
 import { fallbackURI } from './ProductListItem'
+import RemoteImage from './RemoteImage'
 
 type OrderItemListItemProps = {
-  item: OrderItem
+  item: { products: Tables<'products'> } & Tables<'order_items'>
 }
 
 const OrderItemListItem = ({ item }: OrderItemListItemProps) => {
   return (
     <View style={styles.container}>
-      <Image
-        source={{ uri: item.products.image || fallbackURI }}
+      <RemoteImage
+        path={item.products.image}
+        fallback={fallbackURI}
         style={styles.image}
         resizeMode="contain"
       />

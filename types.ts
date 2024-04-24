@@ -32,13 +32,13 @@ export type CartItem = {
 }
 
 export const OrderStatusList: OrderStatus[] = [
-  'New',
-  'Cooking',
-  'Delivering',
-  'Delivered',
+  'NEW',
+  'COOKING',
+  'DELIVERING',
+  'DELIVERED',
 ]
 
-export type OrderStatus = 'New' | 'Cooking' | 'Delivering' | 'Delivered'
+export type OrderStatus = 'NEW' | 'COOKING' | 'DELIVERING' | 'DELIVERED'
 
 export type Order = {
   id: number

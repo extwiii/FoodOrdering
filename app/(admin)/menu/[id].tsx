@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   Pressable,
   ActivityIndicator,
 } from 'react-native'
@@ -12,6 +11,7 @@ import { fallbackURI } from '@/components/ProductListItem'
 import { FontAwesome } from '@expo/vector-icons'
 import Colors from '@/constants/Colors'
 import { useProduct } from '@/api/products'
+import RemoteImage from '@/components/RemoteImage'
 
 const ProductDetailsScreen = () => {
   const { id: idString } = useLocalSearchParams()
@@ -50,8 +50,9 @@ const ProductDetailsScreen = () => {
           ),
         }}
       />
-      <Image
-        source={{ uri: product.image || fallbackURI }}
+      <RemoteImage
+        path={product?.image}
+        fallback={fallbackURI}
         style={styles.image}
         resizeMode="contain"
       />
