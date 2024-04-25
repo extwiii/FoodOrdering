@@ -28,8 +28,8 @@ export const initialisePaymentSheet = async (amount: number) => {
   const result = await initPaymentSheet({
     merchantDisplayName: 'foodOrdering',
     paymentIntentClientSecret: paymentIntent,
-    //customerId: customer,
-    //customerEphemeralKeySecret: ephemeralKey,
+    customerId: customer,
+    customerEphemeralKeySecret: ephemeralKey,
     defaultBillingDetails: {
       name: 'John Doe',
     },
