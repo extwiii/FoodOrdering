@@ -8,11 +8,7 @@
 
 ## Demos
 
-https://github.com/user-attachments/assets/7ca4b24f-e72e-4c5c-894a-0b3cea2dbb0e
-
-https://github.com/user-attachments/assets/c7705e59-3004-4f5f-8747-f92271467f98
-
-https://github.com/user-attachments/assets/30a4b23c-eccb-4597-8a9e-4684577e7281
+[Cloudinary video link](https://res.cloudinary.com/dnz83hoo5/video/upload/v1726482737/demo_mdqvm7.mov)
 
 ## Screenshots
 
