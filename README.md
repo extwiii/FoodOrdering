@@ -6,6 +6,18 @@
 - Stripe
 - React Query
 
+## SS
+
+- End User
+
+<img width="1200" alt="Screenshot 2024-09-23 at 15 16 28" src="https://github.com/user-attachments/assets/7ece389b-a7c9-4b7a-9d90-fefb317856f6">
+<img width="1200" alt="Screenshot 2024-09-23 at 15 16 50" src="https://github.com/user-attachments/assets/3bd0366c-34c6-4359-a1fe-993f060b1722">
+
+- Admin User
+
+<img width="1200" alt="Screenshot 2024-09-23 at 15 17 14" src="https://github.com/user-attachments/assets/64d5219e-3332-4836-95b2-d5f79a43f2bb">
+
+
 ## Demos
 
 [Cloudinary video link](https://res.cloudinary.com/dnz83hoo5/video/upload/v1726482737/demo_mdqvm7.mov)
